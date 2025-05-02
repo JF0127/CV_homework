@@ -1,5 +1,5 @@
 # general settings
-name: test_CATANet_x2
+name: whu_x2
 model_type: CATANetModel
 scale: 2
 num_gpu: 1
@@ -7,10 +7,10 @@ manual_seed: 3407
 
 datasets:
   test_1:  # the 1st test dataset
-    name: Set5
+    name: building
     type: PairedImageDataset
-    dataroot_gt: whu/night/origin
-    dataroot_lq: whu/night/result/X2
+    dataroot_gt: /data2/users/jiahaolin/CATANet-main/JF_WHU/HR/night/X4
+    dataroot_lq: /data2/users/jiahaolin/CATANet-main/JF_WHU/LR/night/X2
     io_backend:
       type: disk
 
@@ -24,7 +24,7 @@ network_g:
 path:
   pretrain_network_g: pretrained_models/x2.pth
   strict_load_g: true
-  results_root: results/CATANet
+  results_root: results/WHU
 
 # validation settings
 val:
