@@ -1,0 +1,42 @@
+# general settings
+name: test_CATANet_x2
+model_type: CATANetModel
+scale: 2
+num_gpu: 1
+manual_seed: 3407
+
+datasets:
+  test_1:  # the 1st test dataset
+    name: Set5
+    type: PairedImageDataset
+    dataroot_gt: whu/night/origin
+    dataroot_lq: whu/night/result/X2
+    io_backend:
+      type: disk
+
+
+# network structures
+network_g:
+  type: CATANet
+  upscale: 2
+
+# path
+path:
+  pretrain_network_g: pretrained_models/x2.pth
+  strict_load_g: true
+  results_root: results/CATANet
+
+# validation settings
+val:
+  save_img: true
+  suffix: CATANet  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr_pt
+      crop_border: 2
+      test_y_channel: true
+    ssim:
+      type: calculate_ssim_pt
+      crop_border: 2
+      test_y_channel: true
