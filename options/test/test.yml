@@ -9,8 +9,8 @@ datasets:
   test_1:  # the 1st test dataset
     name: building
     type: PairedImageDataset
-    dataroot_gt: /data2/users/jiahaolin/CATANet-main/JF_WHU/HR/night/X4
-    dataroot_lq: /data2/users/jiahaolin/CATANet-main/JF_WHU/LR/night/X2
+    dataroot_gt: /data2/users/jiahaolin/CATANet-main/JF_WHU/HR/
+    dataroot_lq: /data2/users/jiahaolin/CATANet-main/JF_WHU/LR/X2
     io_backend:
       type: disk
 

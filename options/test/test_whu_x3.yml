@@ -1,24 +1,23 @@
 # general settings
-name: whu_x3
+name: whu_x3_light
 model_type: CATANetModel
-scale: 2
+scale: 3
 num_gpu: 1
 manual_seed: 3407
 
 datasets:
   test_1:  # the 1st test dataset
-    name: Set5
+    name: JF_SET5
     type: PairedImageDataset
-    dataroot_gt: /data2/users/jiahaolin/CATANet-main/JF_WHU/HR/animal
-    dataroot_lq: /data2/users/jiahaolin/CATANet-main/JF_WHU/LR/animal/X3
+    dataroot_gt: /data2/users/jiahaolin/CATANet-main/JF_SET5/Light/HR/8
+    dataroot_lq: /data2/users/jiahaolin/CATANet-main/JF_SET5/Light/LR/X3/8
     io_backend:
       type: disk
-
 
 # network structures
 network_g:
   type: CATANet
-  upscale: 2
+  upscale: 3
 
 # path
 path:
@@ -34,9 +33,9 @@ val:
   metrics:
     psnr: # metric name, can be arbitrary
       type: calculate_psnr_pt
-      crop_border: 2
+      crop_border: 3
       test_y_channel: true
     ssim:
       type: calculate_ssim_pt
-      crop_border: 2
+      crop_border: 3
       test_y_channel: true

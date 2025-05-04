@@ -1,0 +1,76 @@
+2025-05-04 10:37:35,459 INFO: 
+                ____                _       _____  ____
+               / __ ) ____ _ _____ (_)_____/ ___/ / __ \
+              / __  |/ __ `// ___// // ___/\__ \ / /_/ /
+             / /_/ // /_/ /(__  )/ // /__ ___/ // _, _/
+            /_____/ \__,_//____//_/ \___//____//_/ |_|
+     ______                   __   __                 __      __
+    / ____/____   ____   ____/ /  / /   __  __ _____ / /__   / /
+   / / __ / __ \ / __ \ / __  /  / /   / / / // ___// //_/  / /
+  / /_/ // /_/ // /_/ // /_/ /  / /___/ /_/ // /__ / /<    /_/
+  \____/ \____/ \____/ \____/  /_____/\____/ \___//_/|_|  (_)
+    
+Version Information: 
+	BasicSR: 1.4.2
+	PyTorch: 2.1.2+cu118
+	TorchVision: 0.16.2+cu118
+2025-05-04 10:37:35,460 INFO: 
+  name: whu_x2_light
+  model_type: CATANetModel
+  scale: 2
+  num_gpu: 1
+  manual_seed: 3407
+  datasets:[
+    test_1:[
+      name: JF_SET5
+      type: PairedImageDataset
+      dataroot_gt: /data2/users/jiahaolin/CATANet-main/JF_SET5/origin/Real/2
+      dataroot_lq: /data2/users/jiahaolin/CATANet-main/JF_SET5/origin/BD/2
+      io_backend:[
+        type: disk
+      ]
+      phase: test
+      scale: 2
+    ]
+  ]
+  network_g:[
+    type: CATANet
+    upscale: 2
+  ]
+  path:[
+    pretrain_network_g: pretrained_models/x2.pth
+    strict_load_g: True
+    results_root: results/WHU/whu_x2_light
+    log: results/WHU/whu_x2_light
+    visualization: results/WHU/whu_x2_light/visualization
+  ]
+  val:[
+    save_img: True
+    suffix: CATANet
+    metrics:[
+      psnr:[
+        type: calculate_psnr_pt
+        crop_border: 2
+        test_y_channel: True
+      ]
+      ssim:[
+        type: calculate_ssim_pt
+        crop_border: 2
+        test_y_channel: True
+      ]
+    ]
+  ]
+  dist: False
+  rank: 0
+  world_size: 1
+  auto_resume: False
+  is_train: False
+
+2025-05-04 10:37:35,460 INFO: Dataset [PairedImageDataset] - JF_SET5 is built.
+2025-05-04 10:37:35,460 INFO: Number of test images in JF_SET5: 1
+2025-05-04 10:37:35,507 INFO: Network [CATANet] is created.
+2025-05-04 10:37:35,587 INFO: Network: CATANet, with parameters: 477,435
+2025-05-04 10:37:35,587 INFO: #Params of CATANet: 477.4350 [K]
+2025-05-04 10:37:35,595 INFO: Loading CATANet model from pretrained_models/x2.pth, with param key: [params].
+2025-05-04 10:37:35,615 INFO: Model [CATANetModel] is created.
+2025-05-04 10:37:35,615 INFO: Testing JF_SET5...
